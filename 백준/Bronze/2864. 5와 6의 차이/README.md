@@ -1,4 +1,4 @@
-# [Bronze II] 5와 6의 차이 - 2864 
+# [Bronze II] 5와 6의 차이 - 2864(그리디)
 
 [문제 링크](https://www.acmicpc.net/problem/2864) 
 
