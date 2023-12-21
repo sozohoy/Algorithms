@@ -1,4 +1,4 @@
-# [Silver V] 수들의 합 - 1789 
+# [Silver V] 수들의 합 - 1789(그리디)
 
 [문제 링크](https://www.acmicpc.net/problem/1789) 
 
