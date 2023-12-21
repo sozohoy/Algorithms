@@ -1,4 +1,4 @@
-# [Silver III] 삼각형 만들기 - 1448 
+# [Silver III] 삼각형 만들기 - 1448(그리디)
 
 [문제 링크](https://www.acmicpc.net/problem/1448) 
 
