@@ -43,10 +43,10 @@ for i in 0..<n {
 let dx = [0, 0, 1, -1]
 let dy = [1, -1 , 0 ,0]
 
-func bfs(x: Int, y: Int) -> Int {
+func bfs(x: Int, y: Int) {
     var queue = Queue(queue: [(x, y)])
-    var count = 1
     graph[x][y] = "0"
+    
     while !queue.isEmpty {
         let (x, y) = queue.dequeue()!
         for i in 0..<4 {
@@ -55,14 +55,12 @@ func bfs(x: Int, y: Int) -> Int {
                 continue
             }
             if graph[nx][ny] == "1" {
-                count += 1
                 queue.enqueue((nx, ny))
                 graph[nx][ny] = "0"
                 distance[nx][ny] = distance[x][y] + 1
             }
         }
     }
-    return count
 }
-let _ = bfs(x: 0, y: 0)
+bfs(x: 0, y: 0)
 print(distance[n - 1][m - 1] + 1)
