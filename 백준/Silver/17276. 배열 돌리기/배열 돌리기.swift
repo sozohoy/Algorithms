@@ -22,7 +22,6 @@ for _ in 0..<testCase {
             x -= 1
             y -= 1
             let repeatCount = input[1] > 0 ? degree / 45 : (360 + degree) / 45
-            if repeatCount != 8 {
                 for _ in 0..<repeatCount {
                     var current = arr[x][y]
                     for j in 0..<8 {
@@ -33,15 +32,9 @@ for _ in 0..<testCase {
                         y += dy[j] * distance
                     }
                 }
-            }
             distance = i + 1
         }
     }
 
-    for i in 0..<input[0] {
-        for j in 0..<input[0] {
-            print(arr[i][j], terminator: " ")
-        }
-        print("")
-    }
+    arr.forEach { print($0.map { String($0) }.joined(separator: " "))}
 }
