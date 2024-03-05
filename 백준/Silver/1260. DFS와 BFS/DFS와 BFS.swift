@@ -1,73 +1,42 @@
-import Foundation
-
-let input = readLine()!.split(separator: " ").map { Int(String($0))! }
-var graph = [[Int]](repeating: [], count: input[0] + 1)
-var isVisited = [Bool](repeating: false, count: input[0] + 1)
-
-for _ in 1...input[1] {
-    let element = readLine()!.split(separator: " ").map { Int(String($0))! }
-    graph[element[0]].append(element[1])
-    graph[element[1]].append(element[0])
-    graph[element[0]].sort()
-    graph[element[1]].sort()
+let readline = readLine()!.split(separator: " ").map { Int($0)! }
+var graph: [[Int]] = Array(repeating: [], count: readline[0] + 1)
+var isVisited: [Bool] = Array(repeating: false, count: readline[0] + 1)
+for _ in 1...readline[1] {
+    let input = readLine()!.split(separator: " ").map { Int($0)! }
+    graph[input[0]].append(input[1])
+    graph[input[1]].append(input[0])
+    graph[input[0]].sort()
+    graph[input[1]].sort()
 }
 
-func dfs(start: Int) {
-    isVisited[start] = true
-    print(start, terminator: " ")
-    for i in graph[start] {
-        if !isVisited[i] {
-            dfs(start: i)
+func dfs(n: Int) {
+    isVisited[n] = true
+    print(n, terminator: " ")
+    for i in 0..<graph[n].count {
+        if isVisited[graph[n][i]] == false {
+            dfs(n: graph[n][i])
         }
     }
 }
-dfs(start: input[2])
-isVisited = Array(repeating: false, count: input[0] + 1)
 
-struct Queue<T> {
-    var queue: [T] = []
-
-    var isEmpty: Bool {
-        queue.isEmpty
-    }
-
-    var count: Int {
-        queue.count
-    }
-
-    var front: T? {
-        queue.first
-    }
-
-    mutating func enqueue(_ element: T) {
-        queue.append(element)
-    }
-
-    mutating func dequeue() -> T? {
-        if isEmpty {
-            return nil
-        } else {
-            return queue.removeFirst()
-        }
-    }
-}
+dfs(n: readline[2])
+isVisited = Array(repeating: false, count: readline[0] + 1)
 print("")
-var queue = Queue<Int>()
 
-func bfs(start: Int) {
-    isVisited[start] = true
-    queue.enqueue(start)
-
+func bfs(n: Int) {
+    var queue: [Int] = [readline[2]]
+    isVisited[n] = true
+    print(n, terminator: " ")
     while !queue.isEmpty {
-        guard let element = queue.dequeue() else { return }
-        print(element, terminator: " ")
-        for i in graph[element] {
-            if !isVisited[i] {
-                queue.enqueue(i)
-                isVisited[i] = true
+        let element = queue.removeFirst()
+        for i in 0..<graph[element].count {
+            if isVisited[graph[element][i]] == false {
+                print(graph[element][i], terminator: " ")
+                isVisited[graph[element][i]] = true
+                queue.append(graph[element][i])
             }
         }
     }
 }
 
-bfs(start: input[2])
+bfs(n: readline[2])
