@@ -1,26 +1,11 @@
 import Foundation
 
-func solution(_ s: String) -> Bool {
+func solution(_ s:String) -> Bool
+{
+    var ans:Bool = false
     
-    var resultStack: [String] = []
-    var bracket = s.map { String($0) }
-    var result = false
-    
-    if s.first! == ")" || s.last! == "(" {
-        return false
-    }
-    
-    for i in 0..<bracket.count {
-        if bracket[i] == "(" {
-            resultStack.append(bracket[i])
-        } else {
-            if !resultStack.isEmpty {
-                resultStack.removeLast()
-            } else { 
-                return false
-            }
-        }
-    }
+    // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
+    print("Hello Swift")
 
-    return resultStack.isEmpty ? true : false
+    return ans
 }
