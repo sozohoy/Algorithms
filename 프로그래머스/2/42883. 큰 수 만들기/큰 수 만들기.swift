@@ -4,9 +4,7 @@ func solution(_ number:String, _ k:Int) -> String {
     let numbers: [String] = number.map { String($0) }
     var resultStringCount = numbers.count - k 
     var result = ""
-    if number.count == k {
-        return number
-    }
+    
     var checkIndex = 0
     var index = 0
     for i in stride(from: resultStringCount, to: 0, by: -1) {
